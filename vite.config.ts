@@ -19,3 +19,17 @@ export default defineConfig({
   //   },
   // },
 });
+
+export default {
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor'; // सभी node_modules अलग फाइल में रहेंगे
+          }
+        }
+      }
+    }
+  }
+};
